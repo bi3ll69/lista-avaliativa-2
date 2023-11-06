@@ -1,33 +1,42 @@
 #include <stdio.h>
 
-void soma_janela(int vetor[], int tamanho) {
-  int novo_vetor[tamanho - 1];
-  int indice = 0;
-  for (int i = 0; i < tamanho - 1; i++) {
-    novo_vetor[indice] = vetor[i] + vetor[i + 1];
-    indice++;
-  }
-  for (int i = 0; i < tamanho - 1; i++) {
-    printf("%d ", novo_vetor[i]);
-  }
-  printf("\n");
-  if (tamanho - 1 > 1) {
-    soma_janela(novo_vetor, tamanho - 1);
-  }
-}
-
 int main() {
-  int vetor[10];
-  for (int i = 0; i < 10; i++) {
-    scanf("%d", &vetor[i]);
-  }
+    int values[10];
+    int new_values[9];
 
-  for (int i = 0; i < 10; i++) {
-    printf("%d ", vetor[i]);
-  }
-  printf("\n");
-  
-  soma_janela(vetor, 10);
+    // Leitura dos valores de entrada
+    for (int i = 0; i < 10; i++) {
+        scanf("%d", &values[i]);
+    }
 
-  return 0;
+    // Imprime os valores iniciais
+    for (int i = 0; i < 10; i++) {
+        printf("%d", values[i]);
+        if (i != 9) {
+            printf(" ");
+        }
+    }
+    printf("\n");
+
+    int size = 10;
+    // Loop principal para a geração dos novos conjuntos
+    while (size > 1) {
+        for (int i = 0; i < size - 1; i++) {
+            new_values[i] = values[i] + values[i + 1];
+            printf("%d", new_values[i]);
+            if (i != size - 2) {
+                printf(" ");
+            }
+        }
+        printf("\n");
+
+        // Atualiza os valores para a próxima iteração
+        for (int i = 0; i < size - 1; i++) {
+            values[i] = new_values[i];
+        }
+        // Atualiza o tamanho do conjunto para a próxima iteração
+        size--;
+    }
+
+    return 0;
 }
