@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <string.h>
 #define SIZE 4
 
 void printMatrix(int matrix[SIZE][SIZE]) {

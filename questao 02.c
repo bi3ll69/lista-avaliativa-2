@@ -57,29 +57,24 @@ int main() {
     struct Player team1[NUM_PLAYERS], team2[NUM_PLAYERS];
     char teamName1[31], teamName2[31];
 
-    // Lendo os dados do primeiro time
     fgets(teamName1, 31, stdin);
-    teamName1[strcspn(teamName1, "\n")] = 0; // Remover o caractere de nova linha, se presente
+    teamName1[strcspn(teamName1, "\n")] = 0;
     for (int i = 0; i < NUM_PLAYERS; i++) {
         scanf("%[^;];%c;%d\n", team1[i].name, &team1[i].position, &team1[i].strength);
     }
 
-    // Lendo os dados do segundo time
     fgets(teamName2, 31, stdin);
-    teamName2[strcspn(teamName2, "\n")] = 0; // Remover o caractere de nova linha, se presente
+    teamName2[strcspn(teamName2, "\n")] = 0;
     for (int i = 0; i < NUM_PLAYERS; i++) {
         scanf("%[^;];%c;%d\n", team2[i].name, &team2[i].position, &team2[i].strength);
     }
 
-    // Calculando as forças de cada time
     float force1 = calculateForce(team1);
     float force2 = calculateForce(team2);
 
-    // Exibindo os resultados
     printf("%s: %.2f de forca\n", teamName1, force1);
     printf("%s: %.2f de forca\n", teamName2, force2);
 
-    // Comparando as forças e exibindo o time mais forte
     if (force1 > force2) {
         printf("%s eh mais forte\n", teamName1);
     } else if (force2 > force1) {
